@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+html {
+  color-scheme: light;
+}
+html.dark {
+  color-scheme: dark;
+}
+
+body {
+  font-family: "Be Vietnam Pro", ui-sans-serif, system-ui, sans-serif;
+  @apply bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+@layer components {
+  .card {
+    @apply bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-xs;
+  }
+  .input {
+    @apply w-full px-3.5 py-2 text-sm border border-slate-200 dark:border-slate-700 rounded-xl bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 placeholder:text-slate-400 focus:outline-none focus:border-indigo-500;
+  }
+  .label {
+    @apply text-xs font-medium text-slate-600 dark:text-slate-400;
+  }
+  .btn,
+  .btn-primary,
+  .btn-success,
+  .btn-ghost,
+  .btn-danger {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-sm font-bold transition cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-primary {
+    @apply bg-indigo-600 hover:bg-indigo-700 text-white;
+  }
+  .btn-success {
+    @apply bg-emerald-600 hover:bg-emerald-700 text-white;
+  }
+  .btn-ghost {
+    @apply bg-slate-100 hover:bg-slate-200 text-slate-700 dark:bg-slate-800 dark:hover:bg-slate-700 dark:text-slate-200;
+  }
+  .btn-danger {
+    @apply bg-rose-100 hover:bg-rose-200 text-rose-700 dark:bg-rose-950 dark:hover:bg-rose-900 dark:text-rose-300;
+  }
+  .muted {
+    @apply text-slate-500 dark:text-slate-400;
+  }
+  .price {
+    @apply font-extrabold text-indigo-600 dark:text-indigo-400;
+  }
+  .tbl {
+    @apply w-full text-left border-collapse text-sm;
+  }
+  .tbl thead tr {
+    @apply bg-slate-50 dark:bg-slate-800/60 text-slate-500 dark:text-slate-400 text-xs uppercase border-b border-slate-100 dark:border-slate-800;
+  }
+  .tbl th {
+    @apply py-3.5 px-5 font-semibold;
+  }
+  .tbl td {
+    @apply py-3.5 px-5 align-top;
+  }
+  .tbl tbody {
+    @apply divide-y divide-slate-100 dark:divide-slate-800;
+  }
+  .tbl tbody tr {
+    @apply hover:bg-slate-50 dark:hover:bg-slate-800/40;
+  }
+  .chip,
+  .chip-active {
+    @apply px-3.5 py-1.5 rounded-xl text-xs font-semibold transition cursor-pointer;
+  }
+  .chip {
+    @apply bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700;
+  }
+  .chip-active {
+    @apply bg-indigo-600 text-white;
+  }
+}
+
+@keyframes slide-in {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.drawer-panel { animation: slide-in 0.25s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+.drawer-backdrop { animation: fade-in 0.2s ease-out both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .drawer-panel, .drawer-backdrop { animation: none; }
+  * { scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
+}

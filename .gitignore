@@ -1,0 +1,16 @@
+# Thư viện và file build (cài lại bằng npm install / pip install)
+node_modules/
+dist/
+__pycache__/
+.pytest_cache/
+*.pyc
+
+# Cấu hình chứa mật khẩu - chỉ đẩy .env.example
+.env
+
+# Ảnh admin tải lên lúc chạy
+backend/uploads/
+
+# Báo cáo và file tạm
+BaoCao/
+.playwright-mcp/
